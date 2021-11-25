@@ -1,6 +1,7 @@
 package com.application.autogestionClientes.service.interfaces;
 
 import com.application.autogestionClientes.dto.EmpresaDto;
+import com.application.autogestionClientes.dto.EmpresaRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public interface IEmpresaService {
 
     EmpresaDto findByIdEmpresa(Long idEmpresa);
 
-    void save(EmpresaDto empresa);
+    void save(EmpresaRequest empresa);
 
     void deleteById(Long idEmpresa);
 

@@ -1,6 +1,7 @@
 package com.application.autogestionClientes.service.implementations;
 
 import com.application.autogestionClientes.dto.EmpresaDto;
+import com.application.autogestionClientes.dto.EmpresaRequest;
 import com.application.autogestionClientes.entity.Empresa;
 import com.application.autogestionClientes.repository.EmpresaRepository;
 import com.application.autogestionClientes.service.interfaces.IEmpresaService;
@@ -48,8 +49,8 @@ public class EmpresaImpl implements IEmpresaService {
     }
 
     @Override
-    public void save(EmpresaDto empresaDto) {
-        Empresa empresa = MHelpers.modelMapper().map(empresaDto, Empresa.class);
+    public void save(EmpresaRequest empresaRequest) {
+        Empresa empresa = MHelpers.modelMapper().map(empresaRequest, Empresa.class);
         this.empresaRepository.save(empresa);
     }
 
