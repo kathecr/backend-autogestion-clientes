@@ -5,7 +5,7 @@ CREATE TABLE Empresa(
     nombre 				VARCHAR(70) 	NOT NULL,
     celular 			VARCHAR(10) 	NOT NULL,
     correo 				VARCHAR(50) 	NOT NULL,
-    clave 				VARCHAR(32) 	NOT NULL,
+    clave 				VARCHAR(60) 	NOT NULL,
     PRIMARY KEY		(empresa_id)
 );
 

@@ -5,6 +5,7 @@ import com.application.autogestionClientes.dto.EmpresaRequest;
 import com.application.autogestionClientes.entity.Empresa;
 import com.application.autogestionClientes.repository.EmpresaRepository;
 import com.application.autogestionClientes.service.interfaces.IEmpresaService;
+import com.application.autogestionClientes.utils.BCrypt;
 import com.application.autogestionClientes.utils.MHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -51,6 +52,7 @@ public class EmpresaImpl implements IEmpresaService {
     @Override
     public void save(EmpresaRequest empresaRequest) {
         Empresa empresa = MHelpers.modelMapper().map(empresaRequest, Empresa.class);
+        empresa.setClave( BCrypt.hashpw(empresaRequest.getClave(),BCrypt.gensalt()) );
         this.empresaRepository.save(empresa);
     }
 
