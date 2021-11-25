@@ -17,11 +17,20 @@ public class SolicitudesArea {
     @Column(name = "numero_solicitudes")
     private Long numeroSolicitudes;
 
-    // Relaciones
+    //------- Relaciones -------
     @Column(name = "area_id")
     private Long idArea;
 
     @Column(name = "reporte_id")
     private Long idReporte;
+
+    //------ MAPEO ------
+    @ManyToOne
+    @JoinColumn(name = "area_id", insertable = false, updatable = false)
+    private  Area area;
+
+    @ManyToOne
+    @JoinColumn(name = "reporte_id", insertable = false, updatable = false)
+    private  Reporte reporte;
 
 }

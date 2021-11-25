@@ -23,10 +23,20 @@ public class Calificacion {
     @Column(name = "fecha_calificacion")
     private LocalDateTime fechaCalificacion;
 
-    // Relaciones
+    //------ Relaciones ------
     @Column(name = "tutorial_id")
     private Long idTutorial;
 
     @Column(name = "empresa_id")
     private Long idEmpresa;
+
+    //------- Mapeo ------
+    @ManyToOne
+    @JoinColumn(name = "tutorial_id", insertable = false, updatable = false)
+    private Tutorial tutorial;
+
+    @ManyToOne
+    @JoinColumn(name = "empresa_id", insertable = false, updatable = false)
+    private Empresa empresa;
+
 }

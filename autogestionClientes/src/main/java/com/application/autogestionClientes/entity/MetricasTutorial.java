@@ -24,4 +24,13 @@ public class MetricasTutorial {
 
     @Column(name = "reporte_id")
     private Long idReporte;
+
+    //------ MAPEO ------
+    @ManyToOne
+    @JoinColumn(name = "tutorial_id", insertable = false, updatable = false)
+    private  Tutorial tutorial;
+
+    @ManyToOne
+    @JoinColumn(name = "reporte_id", insertable = false, updatable = false)
+    private  Reporte reporte;
 }

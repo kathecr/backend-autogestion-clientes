@@ -3,6 +3,7 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,4 +27,11 @@ public class Reporte {
 
     @Column(name = "fecha_generacion")
     private LocalDateTime fechaGeneracion;
+
+    //------ MAPEO ------
+    @OneToMany(mappedBy = "reporte")
+    private List<SolicitudesArea> SolicitudesAreas;
+
+    @OneToMany(mappedBy = "reporte")
+    private List<MetricasTutorial> metricasTutoriales;
 }

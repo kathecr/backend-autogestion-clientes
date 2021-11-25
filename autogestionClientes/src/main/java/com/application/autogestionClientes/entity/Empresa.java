@@ -2,6 +2,7 @@ package com.application.autogestionClientes.entity;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,4 +23,16 @@ public class Empresa {
     private String correo;
 
     private String clave;
+
+    //private String licencia;
+
+    //------ MAPEO ------
+    @OneToMany(mappedBy = "empresa")
+    private List<Solicitud> solicitudes;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<Calificacion> calificaciones;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<Click> Clicks;
 }
