@@ -5,9 +5,9 @@ import com.application.autogestionClientes.dto.EmpresaRequest;
 import com.application.autogestionClientes.entity.Empresa;
 import com.application.autogestionClientes.repository.EmpresaRepository;
 import com.application.autogestionClientes.service.interfaces.IEmpresaService;
-import com.application.autogestionClientes.utils.BCrypt;
-import com.application.autogestionClientes.utils.MHelpers;
+import com.application.autogestionClientes.utils.helper.MHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,6 +20,8 @@ public class EmpresaImpl implements IEmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
+    @Autowired
+    private PasswordEncoder bcryptEncoder;
 
     @Override
     public List<EmpresaDto> findAll() {
@@ -52,8 +54,15 @@ public class EmpresaImpl implements IEmpresaService {
     @Override
     public void save(EmpresaRequest empresaRequest) {
         Empresa empresa = MHelpers.modelMapper().map(empresaRequest, Empresa.class);
-        empresa.setClave( BCrypt.hashpw(empresaRequest.getClave(),BCrypt.gensalt()) );
+        empresa.setClave(bcryptEncoder.encode(empresaRequest.getClave()));
         this.empresaRepository.save(empresa);
+    }
+
+    @Override
+    public void update(EmpresaRequest empresaRequest, Long idEmpresa) {
+        Optional<Empresa> empresaOpt = this.empresaRepository.findById(idEmpresa);
+        Empresa empresa = empresaOpt.get();
+        empresa.setCelular(empresaRequest.getCelular());
     }
 
     @Override

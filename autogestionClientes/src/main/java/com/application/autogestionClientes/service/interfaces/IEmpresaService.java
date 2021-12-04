@@ -19,6 +19,8 @@ public interface IEmpresaService {
 
     void save(EmpresaRequest empresa);
 
+    void update(EmpresaRequest empresa, Long idEmpresa);
+
     void deleteById(Long idEmpresa);
 
 

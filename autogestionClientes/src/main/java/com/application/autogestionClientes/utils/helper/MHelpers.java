@@ -1,4 +1,4 @@
-package com.application.autogestionClientes.utils;
+package com.application.autogestionClientes.utils.helper;
 import org.modelmapper.ModelMapper;
 
 public class MHelpers {
