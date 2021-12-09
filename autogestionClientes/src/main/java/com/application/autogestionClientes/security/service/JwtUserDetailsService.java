@@ -1,7 +1,7 @@
 package com.application.autogestionClientes.security.service;
 
-import com.application.autogestionClientes.entity.Empresa;
-import com.application.autogestionClientes.repository.EmpresaRepository;
+import com.application.autogestionClientes.entity.Usuario;
+import com.application.autogestionClientes.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,17 +15,17 @@ import java.util.ArrayList;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
     @Autowired
-    private EmpresaRepository empresaRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String Nit) throws UsernameNotFoundException {
-        Empresa empresa = empresaRepository.findByNit(Nit).get();
-        if(empresa == null){
+        Usuario usuario = usuarioRepository.findByUsuarioNit(Nit).get();
+        if(usuario == null){
 
         }
-        return new User(empresa.getNit(), empresa.getClave(), new ArrayList<>());
+        return new User(usuario.getUsuarioNit(), usuario.getClave(), new ArrayList<>());
     }
 }

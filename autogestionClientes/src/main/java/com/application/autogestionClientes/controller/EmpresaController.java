@@ -23,16 +23,6 @@ public class EmpresaController {
     @Autowired
     private EmpresaValidatorImpl empresaValidator;
 
-    @GetMapping("/hello")
-    public String sayHello(@RequestParam(required = false,defaultValue = "TechGeekNext User") String name) {
-        return "Hello "+name;
-    }
-
-    @GetMapping("/admin/hello")
-    public String sayAdminHello(String name) {
-        return "Hello Admin "+name;
-    }
-
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Object> getAll(){

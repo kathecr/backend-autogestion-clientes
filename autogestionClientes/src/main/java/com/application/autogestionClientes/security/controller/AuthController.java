@@ -28,14 +28,12 @@ public class AuthController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
-        authenticate(authenticationRequest.getNit(), authenticationRequest.getPassword());
-
+        authenticate(authenticationRequest.getNit(), authenticationRequest.getClave());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getNit());
-
         final String token = jwtTokenUtil.generateToken(userDetails);
-
         return ResponseEntity.ok(new JwtResponse(token));
     }
+
     private void authenticate(String username, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));

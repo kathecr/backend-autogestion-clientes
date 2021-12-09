@@ -22,11 +22,19 @@ public class Empresa {
 
     private String correo;
 
-    private String clave;
+    private String licencia;
 
-    //private String licencia;
+    @Column(name = "fecha_vencimiento")
+    private String fechaVencimiento;
+
+    @Column(name= "usuario_id")
+    private Long IdUsuario;
 
     //------ MAPEO ------
+    @OneToOne
+    @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
+    private Usuario usuario;
+
     @OneToMany(mappedBy = "empresa")
     private List<Solicitud> solicitudes;
 

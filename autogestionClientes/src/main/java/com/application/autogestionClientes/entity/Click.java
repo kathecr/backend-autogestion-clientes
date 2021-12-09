@@ -18,14 +18,14 @@ public class Click {
     @Column(name = "fecha_click")
     private LocalDateTime fechaClick;
 
-    //------ Relaciones ------
+    //------ RELACIONES ------
     @Column(name = "tutorial_id")
     private Long idTutorial;
 
     @Column(name = "empresa_id")
     private Long idEmpresa;
 
-    //------- Mapeo ------
+    //------- MAPEO ------
     @ManyToOne
     @JoinColumn(name = "tutorial_id", insertable = false, updatable = false)
     private Tutorial tutorial;

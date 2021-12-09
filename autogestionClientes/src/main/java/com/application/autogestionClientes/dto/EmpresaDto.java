@@ -11,6 +11,7 @@ public class EmpresaDto implements Serializable {
     private String nombre;
     private String celular;
     private String correo;
-    //private String licencia;
+    private String licencia;
+    private String fechaVencimiento;
 
 }

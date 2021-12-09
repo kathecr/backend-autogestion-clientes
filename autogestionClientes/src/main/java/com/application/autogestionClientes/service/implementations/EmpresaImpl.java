@@ -20,9 +20,6 @@ public class EmpresaImpl implements IEmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    @Autowired
-    private PasswordEncoder bcryptEncoder;
-
     @Override
     public List<EmpresaDto> findAll() {
         List<EmpresaDto> empresasDto = new ArrayList<>();
@@ -54,7 +51,6 @@ public class EmpresaImpl implements IEmpresaService {
     @Override
     public void save(EmpresaRequest empresaRequest) {
         Empresa empresa = MHelpers.modelMapper().map(empresaRequest, Empresa.class);
-        empresa.setClave(bcryptEncoder.encode(empresaRequest.getClave()));
         this.empresaRepository.save(empresa);
     }
 

@@ -20,13 +20,13 @@ public class Tutorial {
     private Double calificacion;
 
     //------ MAPEO ------
-    @OneToMany(mappedBy = "tutorial")
-    private List<Calificacion> calificaciones;
+//    @OneToMany(mappedBy = "tutorial")
+//    private List<Calificacion> calificaciones;
 
-    @OneToMany(mappedBy = "tutorial")
-    private List<Click> Clicks;
+//    @OneToMany(mappedBy = "tutorial")
+//    private List<Click> Clicks;
 
-    @OneToMany(mappedBy = "tutorial")
-    private List<MetricasTutorial> metricasTutoriales;
+//    @OneToMany(mappedBy = "tutorial")
+//    private List<MetricasTutorial> metricasTutoriales;
 
 }

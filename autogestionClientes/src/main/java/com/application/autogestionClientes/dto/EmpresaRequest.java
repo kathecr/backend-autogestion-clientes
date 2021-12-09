@@ -15,6 +15,4 @@ public class EmpresaRequest implements Serializable {
     private String celular;
     @JsonProperty("correo")
     private String correo;
-    @JsonProperty("clave")
-    private String clave;
 }
