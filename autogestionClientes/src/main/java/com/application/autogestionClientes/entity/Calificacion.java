@@ -1,6 +1,7 @@
 package com.application.autogestionClientes.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,6 +32,7 @@ public class Calificacion {
     private Long idEmpresa;
 
     //------- Mapeo ------
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "tutorial_id", insertable = false, updatable = false)
     private Tutorial tutorial;

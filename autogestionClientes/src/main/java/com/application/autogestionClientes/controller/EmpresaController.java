@@ -37,7 +37,7 @@ public class EmpresaController {
 
     @PostMapping(value="/save", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> saveEmpresa(@RequestBody EmpresaRequest request) throws ApiUnprocessableEntity {
-        this.empresaValidator.validator(request);
+        //this.empresaValidator.validator(request);
         this.empresaService.save(request);
         return ResponseEntity.ok(Boolean.TRUE);
     }

@@ -23,7 +23,7 @@ public class JwtTokenUtil implements Serializable {
     @Value("${jwt.secret}")
     private String secret;
 
-    public String getNitFromToken(String token) {
+    public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
@@ -70,7 +70,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
-        final String nit = getNitFromToken(token);
+        final String nit = getUsernameFromToken(token);
         return (nit.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }

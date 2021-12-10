@@ -15,8 +15,8 @@ public class Usuario {
     @Column(name = "usuario_id")
     private Long idUsuario;
 
-    @Column(name = "usuario_nit")
-    private String usuarioNit;
+    @Column(name = "nombre_usuario")
+    private String nombreUsuario;
 
     private String clave;
 
@@ -24,4 +24,5 @@ public class Usuario {
 
    // @OneToOne(mappedBy = "usuario")
    // private Empresa empresa;
+
 }

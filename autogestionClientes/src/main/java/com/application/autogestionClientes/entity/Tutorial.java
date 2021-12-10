@@ -1,5 +1,6 @@
 package com.application.autogestionClientes.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,14 +20,20 @@ public class Tutorial {
 
     private Double calificacion;
 
+    @Column(name = "numero_calificaciones")
+    private Integer numeroCalificaciones;
+
     //------ MAPEO ------
-//    @OneToMany(mappedBy = "tutorial")
-//    private List<Calificacion> calificaciones;
+    @JsonIgnore
+    @OneToMany(mappedBy = "tutorial")
+    private List<Calificacion> calificaciones;
 
-//    @OneToMany(mappedBy = "tutorial")
-//    private List<Click> Clicks;
+    @JsonIgnore
+    @OneToMany(mappedBy = "tutorial")
+    private List<Click> Clicks;
 
-//    @OneToMany(mappedBy = "tutorial")
-//    private List<MetricasTutorial> metricasTutoriales;
+    @JsonIgnore
+    @OneToMany(mappedBy = "tutorial")
+    private List<MetricasTutorial> metricasTutoriales;
 
 }

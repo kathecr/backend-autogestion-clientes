@@ -22,7 +22,7 @@ public class UsuarioImpl implements IUsuarioService {
     
     @Override
     public UsuarioDto findByUsuarioNit(String nit) {
-        Optional<Usuario> usuario = this.usuarioRepository.findByUsuarioNit(nit);
+        Optional<Usuario> usuario = this.usuarioRepository.findByNombreUsuario(nit);
         if(usuario.isEmpty()){
             return null;
         }
@@ -40,9 +40,9 @@ public class UsuarioImpl implements IUsuarioService {
 
     @Override
     public void save(UsuarioRequest usuarioRequest) {
-        Usuario Usuario = MHelpers.modelMapper().map(usuarioRequest, Usuario.class);
-        Usuario.setClave(bcryptEncoder.encode(usuarioRequest.getClave()));
-        this.usuarioRepository.save(Usuario);
+        Usuario usuario = MHelpers.modelMapper().map(usuarioRequest, Usuario.class);
+        usuario.setClave(bcryptEncoder.encode(usuarioRequest.getClave()));
+        this.usuarioRepository.save(usuario);
     }
 
     @Override

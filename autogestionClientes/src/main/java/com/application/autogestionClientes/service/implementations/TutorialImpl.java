@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Component
 public class TutorialImpl implements ITutorialService {
 
@@ -36,5 +38,14 @@ public class TutorialImpl implements ITutorialService {
     @Override
     public TutorialesDto findByTituloContaing(String titulo, Pageable paging){
         return null;
+    }
+
+    @Override
+    public Tutorial findById(Long id){
+        Optional<Tutorial> tutorial= tutorialRepository.findById(id);
+        if(tutorial.isEmpty()){
+            return new Tutorial();
+        }
+        return tutorial.get();
     }
 }

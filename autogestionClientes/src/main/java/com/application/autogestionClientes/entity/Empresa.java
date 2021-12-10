@@ -2,6 +2,8 @@ package com.application.autogestionClientes.entity;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -22,18 +24,19 @@ public class Empresa {
 
     private String correo;
 
+    private String clave;
+
     private String licencia;
 
     @Column(name = "fecha_vencimiento")
-    private String fechaVencimiento;
+    private Date fechaVencimiento;
 
-    @Column(name= "usuario_id")
-    private Long IdUsuario;
-
-    //------ MAPEO ------
-    @OneToOne
-    @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
-    private Usuario usuario;
+  //  @Column(name= "usuario_id")
+  //  private Long IdUsuario;
+    // ------ MAPEO ------
+  //  @OneToOne
+  //  @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
+  //  private Usuario usuario;
 
     @OneToMany(mappedBy = "empresa")
     private List<Solicitud> solicitudes;
