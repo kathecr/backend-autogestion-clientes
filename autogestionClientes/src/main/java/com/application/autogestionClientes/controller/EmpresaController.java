@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.print.attribute.standard.Media;
 
-@CrossOrigin("*")
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/empresa")
 public class EmpresaController {
