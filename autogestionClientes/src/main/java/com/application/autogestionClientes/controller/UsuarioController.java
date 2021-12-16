@@ -26,7 +26,6 @@ public class UsuarioController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> saveUsuario(@RequestBody UsuarioRequest request) throws ApiUnprocessableEntity {
-        //this.empresaValidator.validator(request);
         this.usuarioService.save(request);
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
