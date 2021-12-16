@@ -1,4 +1,5 @@
 package com.application.autogestionClientes.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -37,13 +38,15 @@ public class Empresa {
   //  @OneToOne
   //  @JoinColumn(name = "usuario_id", insertable = false, updatable = false)
   //  private Usuario usuario;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "empresa")
     private List<Solicitud> solicitudes;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "empresa")
     private List<Calificacion> calificaciones;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "empresa")
     private List<Click> Clicks;
 }

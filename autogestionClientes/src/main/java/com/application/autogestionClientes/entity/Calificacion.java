@@ -15,7 +15,7 @@ public class Calificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "calificacion_id")
-    private Long idCalificacion;
+    private Long id;
 
     private Long calificacion;
 
@@ -37,6 +37,7 @@ public class Calificacion {
     @JoinColumn(name = "tutorial_id", insertable = false, updatable = false)
     private Tutorial tutorial;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "empresa_id", insertable = false, updatable = false)
     private Empresa empresa;
