@@ -22,8 +22,9 @@ public class TutorialImpl implements ITutorialService {
     @Override
     public TutorialesDto findAll(Pageable paging) {
         //Pageable paging = PageRequest.of(pageNo, pageSize);
-        Page<Tutorial> pagedResult = tutorialRepository.findAll(paging);
         List<Tutorial> tutoriales;
+        Page<Tutorial> pagedResult = tutorialRepository.findAll(paging);
+
         if(pagedResult.hasContent()) {
             tutoriales = pagedResult.getContent();
         } else {

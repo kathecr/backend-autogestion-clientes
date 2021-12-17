@@ -1,12 +1,11 @@
 package com.application.autogestionClientes.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -22,7 +21,7 @@ public class Calificacion {
     private String resena;
 
     @Column(name = "fecha_calificacion")
-    private LocalDateTime fechaCalificacion;
+    private Date fechaCalificacion;
 
     //------ Relaciones ------
     @Column(name = "tutorial_id")
@@ -37,7 +36,7 @@ public class Calificacion {
     @JoinColumn(name = "tutorial_id", insertable = false, updatable = false)
     private Tutorial tutorial;
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "empresa_id", insertable = false, updatable = false)
     private Empresa empresa;

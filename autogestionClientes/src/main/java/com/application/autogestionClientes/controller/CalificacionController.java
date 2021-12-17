@@ -1,5 +1,6 @@
 package com.application.autogestionClientes.controller;
 
+import com.application.autogestionClientes.dto.CalificacionDto;
 import com.application.autogestionClientes.entity.Calificacion;
 import com.application.autogestionClientes.service.interfaces.ICalificacionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,13 @@ public class CalificacionController{
     ICalificacionService calificacionService;
 
     @GetMapping(value = "/tutorial/{id_tutorial}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Calificacion>> getByIdTutorial(
+    public ResponseEntity<List<CalificacionDto>> getByIdTutorial(
             @PathVariable("id_tutorial") Long id,
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "3") Integer size)
     {
         Pageable paging = PageRequest.of(page, size);
-        List<Calificacion> calificaciones = calificacionService.findByIdTutorial(id,paging);
+        List<CalificacionDto> calificaciones = calificacionService.findByIdTutorial(id,paging);
         return new ResponseEntity<>(calificaciones, new HttpHeaders(), HttpStatus.OK);
     }
 }

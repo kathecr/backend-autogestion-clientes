@@ -23,8 +23,8 @@ public class TutorialController {
     //@ResponseBody
     public ResponseEntity<TutorialesDto> getAll(
             @RequestParam(required = false) String title,
-            @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "10") Integer size)
+            @RequestParam Integer page,
+            @RequestParam Integer size)
             //@RequestParam(defaultValue = "id") String sortBy)
     {
         Pageable paging = PageRequest.of(page, size);
