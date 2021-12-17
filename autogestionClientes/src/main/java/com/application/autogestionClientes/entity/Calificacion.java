@@ -3,6 +3,7 @@ package com.application.autogestionClientes.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class Calificacion {
 
     private String resena;
 
+    @CreatedDate
     @Column(name = "fecha_calificacion")
     private Date fechaCalificacion;
 
@@ -36,9 +38,13 @@ public class Calificacion {
     @JoinColumn(name = "tutorial_id", insertable = false, updatable = false)
     private Tutorial tutorial;
 
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "empresa_id", insertable = false, updatable = false)
     private Empresa empresa;
 
+    @PrePersist
+    protected void prePersist() {
+        this.fechaCalificacion = new Date();
+    }
 }
